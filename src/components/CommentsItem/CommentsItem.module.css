@@ -12,3 +12,18 @@
   opacity: 0.15;
   transition: 0.3s ease-in-out;
 }
+
+.comment_text {
+  margin: 20px 0;
+}
+
+.child {
+  padding: 0 0 0 30px;
+}
+
+.btn_wrapper {
+  margin: 0 0 30px;
+}
+.btn_wrapper button {
+  padding: 10px 40px;
+}

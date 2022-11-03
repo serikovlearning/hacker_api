@@ -19,7 +19,7 @@ const BackgroundText: React.FC = () => {
       <div>
         <ul className={classes.bg_text_wrapper}>
           {postsId.map((item) => (
-            <li className={classes.bg_text}>
+            <li key={item} className={classes.bg_text}>
               {post.by} <br />
               {post.by} <br />
               {post.by} <br />

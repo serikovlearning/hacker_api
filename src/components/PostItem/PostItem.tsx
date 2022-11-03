@@ -52,7 +52,7 @@ export const PostItem: React.FC<PostItemProps> = (props) => {
         </div>
         <div className={classes.content_item}>
           <Comment className={classes.svg_icon} />
-          <p>{postData.kids ? postData.kids.length : 0} comments</p>
+          <p>{postData.kids ? postData.descendants: 0} comments</p>
         </div>
         <div className={`${classes.content_item} ${classes.date}`}>
           <Calendar className={classes.svg_icon} />

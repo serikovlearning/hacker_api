@@ -11,4 +11,5 @@ export interface IPost {
   url: string;
   text: string;
   parent: number;
+  deleted: boolean;
 }
