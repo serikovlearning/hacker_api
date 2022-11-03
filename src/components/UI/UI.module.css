@@ -1,0 +1,24 @@
+.bg_text_wrapper {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  z-index: -100;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  user-select: none;
+}
+
+.bg_text {
+  font-weight: 700;
+  font-size: 224px;
+  z-index: -100;
+  color: white;
+  opacity: 0.15;
+}

@@ -1,0 +1,20 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background: rgba(29, 29, 29, 0.39);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(13.4px);
+  -webkit-backdrop-filter: blur(13.4px);
+  border: 1px solid rgba(29, 29, 29, 0.34);
+  padding: 20px;
+  width: 100%;
+  color: white;
+  text-align: center;
+  font-size: 28px;
+  font-weight: 600;
+}
+.header * {
+  color: white;
+}
