@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { useAppSelector } from '../../../store/hooks';
 import classes from './BackgroundText.module.css';
 
 const BackgroundText: React.FC = () => {
   const { postsId, loading, post } = useAppSelector((state) => state.posts);
-  const location = useLocation()
+  const location = useLocation();
 
   if (loading) {
     return (
@@ -33,13 +33,13 @@ const BackgroundText: React.FC = () => {
   return (
     <div>
       <ul className={classes.bg_text_wrapper}>
-          <li className={classes.bg_text}>
-            {"<> serikov <>"} <br />
-            {"<> serikov <>"} <br />
-            {"<> serikov <>"} <br />
-            {"<> serikov <>"} <br />
-            {"<> serikov <>"} <br />
-          </li>
+        <li className={classes.bg_text}>
+          {'<> serikov <>'} <br />
+          {'<> serikov <>'} <br />
+          {'<> serikov <>'} <br />
+          {'<> serikov <>'} <br />
+          {'<> serikov <>'} <br />
+        </li>
       </ul>
     </div>
   );

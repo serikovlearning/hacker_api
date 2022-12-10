@@ -6,8 +6,7 @@ import { PostItem } from '../PostItem/PostItem';
 import clasess from './PostList.module.css';
 import CustomSelect from '../UI/CustomSelect/CustomSelect';
 
-
-const MemoCustomSelect = memo(CustomSelect)
+const MemoCustomSelect = memo(CustomSelect);
 
 export const PostList: React.FC = () => {
   const { loading, postListAll } = useAppSelector((state) => state.posts);
@@ -15,10 +14,7 @@ export const PostList: React.FC = () => {
 
   const [sort, setSort] = useState<string>('date');
 
-  const sortArray = [
-    { value: 'date'},
-    { value: 'score'},
-  ];
+  const sortArray = [{ value: 'date' }, { value: 'score' }];
 
   const sortedPosts: Array<IPost> = useMemo(() => {
     switch (sort) {
@@ -36,7 +32,6 @@ export const PostList: React.FC = () => {
         );
     }
   }, [sort, postListAll]);
-
 
   useEffect(() => {
     let timer = setTimeout(function tick() {
@@ -63,7 +58,7 @@ export const PostList: React.FC = () => {
         />
       </div>
       {sortedPosts.map((post) => (
-        <PostItem key={post.id} postType={'other'} postData={post}></PostItem>
+        <PostItem postType={'other'} postData={post}></PostItem>
       ))}
     </div>
   );

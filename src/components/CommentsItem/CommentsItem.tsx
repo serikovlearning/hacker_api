@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 import { getPostById } from '../../helpers/api';
 import { IPost } from '../../interfaces/IPost';
 import classes from './CommentsItem.module.css';
@@ -15,10 +15,10 @@ const CommentsItem: React.FC<CommentItemProps> = ({
   isChild,
 }): JSX.Element => {
   const [childs, setChilds] = useState<Array<IPost>>([]);
-  const [childVisibile, setChildVisibile] = useState<boolean>(true);
+  const [childVisibile, setChildVisibile] = useState<boolean>(false);
 
   const fetchCommentKids = async (): Promise<void> => {
-    if (comment.kids?.length > 0) {
+    if (comment.kids?.length > 0 && !childVisibile) {
       const response = await Promise.all(
         comment.kids?.map(async (kid) => {
           const res = await getPostById(kid);
@@ -26,14 +26,17 @@ const CommentsItem: React.FC<CommentItemProps> = ({
         })
       );
       setChilds([...response]);
+      setChildVisibile(true);
+    } else {
+      setChilds([]);
+      setChildVisibile(false);
     }
-    setChildVisibile(false);
   };
   if (comment.deleted) {
     return (
       <div className={isChild ? classes.child : ''} key={comment.id}>
         <div className={classes.content_item}>
-        <Cross className={classes.svg_icon} />
+          <Cross className={classes.svg_icon} />
           <p>Comment was deleted</p>
         </div>
       </div>
@@ -53,17 +56,21 @@ const CommentsItem: React.FC<CommentItemProps> = ({
       />
 
       <div className={classes.btn_wrapper}>
-        {childVisibile && comment.kids !== undefined && (
-          <button onClick={fetchCommentKids}>view more</button>
+        {comment.kids !== undefined && (
+          <button onClick={fetchCommentKids}>
+            {childVisibile ? 'show less' : 'show more'}
+          </button>
         )}
       </div>
 
       {childs &&
         childs.map((com: IPost) => (
-          <CommentsItem key={com.id} isChild={true} comment={com} />
+          <MemoCommentsItem key={com.id} isChild={true} comment={com} />
         ))}
     </div>
   );
 };
+
+const MemoCommentsItem = memo(CommentsItem);
 
 export default CommentsItem;

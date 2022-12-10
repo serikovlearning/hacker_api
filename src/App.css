@@ -10,13 +10,12 @@ button, select {
   padding: 20px 30px;
   cursor: pointer;
   font-weight: 600;
-  transition: 0.3s ease-in-out;
+  transition: 0.2s ease-in-out;
 }
 
 button:hover, select:hover {
   background: rgba(195, 145, 94, 0.61);
 }
-button:focus,
 button:active {
   background: rgba(195, 145, 94, 0.21);
 }
