@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { getPostById } from '../../helpers/api';
 import { IPost } from '../../interfaces/IPost';
 import classes from './CommentsItem.module.css';
-import { ReactComponent as Comment } from '../../img/comment.svg';
+import { ReactComponent as Cross } from '../../img/cross.svg';
 import { ReactComponent as Author } from '../../img/author.svg';
 
 interface CommentItemProps {
@@ -33,6 +33,7 @@ const CommentsItem: React.FC<CommentItemProps> = ({
     return (
       <div className={isChild ? classes.child : ''} key={comment.id}>
         <div className={classes.content_item}>
+        <Cross className={classes.svg_icon} />
           <p>Comment was deleted</p>
         </div>
       </div>
@@ -43,7 +44,7 @@ const CommentsItem: React.FC<CommentItemProps> = ({
     <div className={isChild ? classes.child : ''} key={comment.id}>
       <div className={classes.content_item}>
         <Author className={classes.svg_icon} />
-        <p>{comment.by}</p>
+        <p className={classes.comment__author}>{comment.by}</p>
       </div>
 
       <div

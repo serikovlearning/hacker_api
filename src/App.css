@@ -1,4 +1,4 @@
-button {
+button, select {
   text-decoration: none;
   background: rgba(195, 145, 94, 0.51);
   border-radius: 16px;
@@ -13,7 +13,7 @@ button {
   transition: 0.3s ease-in-out;
 }
 
-button:hover {
+button:hover, select:hover {
   background: rgba(195, 145, 94, 0.61);
 }
 button:focus,

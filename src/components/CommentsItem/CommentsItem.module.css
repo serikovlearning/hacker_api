@@ -5,6 +5,10 @@
   padding: 0 0 10px 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
+.comment__author {
+  font-weight: 600;
+  font-size: 22px;
+}
 .svg_icon {
   width: 36px;
   height: 36px;
@@ -26,4 +30,8 @@
 }
 .btn_wrapper button {
   padding: 10px 40px;
+}
+
+.comment_text, .comment_text > * {
+  overflow-wrap: anywhere;
 }

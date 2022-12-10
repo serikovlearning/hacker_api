@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react'
 import Header from './Header'
 import { BrowserRouter } from 'react-router-dom'
-import BackgroundText from '../components/UI/BackgroundText'
+import BackgroundText from '../components/UI/BackgroundText/BackgroundText'
 
 interface ILayoutProps {
   children: ReactNode

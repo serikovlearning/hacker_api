@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { fetchComments } from '../../store/slices/commentSlice';
 import { fetchPostById } from '../../store/slices/postsSlice';
 import Comments from '../Comments/Comments';
-import Loader from '../Loader';
+import Loader from '../UI/Loader/Loader';
 import { PostItem } from '../PostItem/PostItem';
 import classes from './SinglePost.module.css'
 
@@ -31,9 +31,6 @@ const SinglePost: React.FC = () => {
     }
   }, []);
 
-  if (loading) {
-    return <Loader />;
-  }
 
   return (
     <div className={classes.post_wrapper}>

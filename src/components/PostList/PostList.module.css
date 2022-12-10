@@ -2,3 +2,9 @@
   max-width: 900px;
   margin: 160px auto 0;
 }
+
+.posts__config {
+  position: sticky;
+  display: flex;
+  justify-content: space-between;
+}
