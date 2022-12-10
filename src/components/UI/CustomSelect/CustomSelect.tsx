@@ -3,7 +3,6 @@ import classes from './CustomSelect.module.css';
 
 interface Options {
   value: string;
-  text: string;
 }
 interface IProps {
   options: Array<Options>;
@@ -22,7 +21,7 @@ const CustomSelect: React.FC<IProps> = (props: IProps) => {
     >
       {options.map((option) => (
         <option key={option.value} value={option.value}>
-          {option.text}
+          Sort by {option.value}
         </option>
       ))}
     </select>

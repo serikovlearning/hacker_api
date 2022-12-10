@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState, memo } from 'react';
 import { IPost } from '../../interfaces/IPost';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { fetchPost } from '../../store/slices/postsSlice';
@@ -6,23 +6,37 @@ import { PostItem } from '../PostItem/PostItem';
 import clasess from './PostList.module.css';
 import CustomSelect from '../UI/CustomSelect/CustomSelect';
 
+
+const MemoCustomSelect = memo(CustomSelect)
+
 export const PostList: React.FC = () => {
   const { loading, postListAll } = useAppSelector((state) => state.posts);
   const dispatch = useAppDispatch();
 
-  const [sort, setSort] = useState('date');
+  const [sort, setSort] = useState<string>('date');
 
   const sortArray = [
-    {value: 'date', text: 'Sort by date'},
-    {value: 'score', text: 'Sort by score'}
-  ]
+    { value: 'date'},
+    { value: 'score'},
+  ];
 
-  const sortedPostByDate: Array<IPost> = [...postListAll].sort(
-    (a, b) => new Date(b.time).getTime() - new Date(a.time).getTime()
-  );
-  const sortedPostByScore: Array<IPost> = [...postListAll].sort(
-    (a, b) => b.score - a.score
-  );
+  const sortedPosts: Array<IPost> = useMemo(() => {
+    switch (sort) {
+      case 'date':
+        return [...postListAll].sort(
+          (a, b) => new Date(b.time).getTime() - new Date(a.time).getTime()
+        );
+
+      case 'score':
+        return [...postListAll].sort((a, b) => b.score - a.score);
+
+      default:
+        return [...postListAll].sort(
+          (a, b) => new Date(b.time).getTime() - new Date(a.time).getTime()
+        );
+    }
+  }, [sort, postListAll]);
+
 
   useEffect(() => {
     let timer = setTimeout(function tick() {
@@ -42,22 +56,15 @@ export const PostList: React.FC = () => {
     <div className={clasess.posts_wrapper}>
       <div className={clasess.posts__config}>
         <button onClick={() => dispatch(fetchPost())}>Update post list</button>
-        <CustomSelect 
-          options={sortArray} 
-          onChange={sort => setSort(sort)}
+        <MemoCustomSelect
+          options={sortArray}
+          onChange={(sort) => setSort(sort)}
           value={sort}
         />
       </div>
-      {
-        sort === 'date' 
-        ? sortedPostByDate.map((post) => (
-          <PostItem key={post.id} postType={'other'} postData={post}></PostItem>
-        ))
-        : sortedPostByScore.map((post) => (
-          <PostItem key={post.id} postType={'other'} postData={post}></PostItem>
-        ))
-      }
-
+      {sortedPosts.map((post) => (
+        <PostItem key={post.id} postType={'other'} postData={post}></PostItem>
+      ))}
     </div>
   );
 };
