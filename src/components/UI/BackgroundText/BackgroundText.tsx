@@ -10,7 +10,7 @@ const BackgroundText: React.FC = () => {
   if (loading) {
     return (
       <div className={classes.bg_text_wrapper}>
-        <p className={classes.bg_text}>Loading...</p>
+        <p className={`${classes.bg_text} ${classes.text__loader}`}>Loading...</p>
       </div>
     );
   }

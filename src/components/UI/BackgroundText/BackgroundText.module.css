@@ -15,10 +15,62 @@
   user-select: none;
 }
 
+
+
 .bg_text {
   font-weight: 700;
   font-size: 224px;
   z-index: -100;
   color: white;
+  opacity: 0.1;
+  text-shadow: 2px 2px 10px rgb(0, 0, 0, 1);
+}
+
+.text__loader {
+  position: relative;
   opacity: 0.15;
+}
+
+.text__loader::after, .text__loader::before {
+  content: '';
+  position: absolute;  
+  width: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.text__loader::before {
+  width: 100%;
+  background-color: #1d1d1d;
+  animation: typing steps(10) 3s forwards;
+}
+
+.text__loader::after {
+  width: 15px;
+  background-color: white;
+  box-shadow: 2px 2px 10px rgb(0, 0, 0);
+  animation: typing steps(10) 3s forwards, blink 750ms steps(10) infinite, flip 375ms ease-in-out 1;
+}
+
+@keyframes typing {
+  from {
+    left: 0;
+  }
+  to {
+    left: 100%;
+  }
+}
+
+@keyframes blink {
+  to {
+    background: transparent;
+  }
+}
+
+@keyframes flip {
+  to {
+    transform: rotate(360deg);
+  }
 }

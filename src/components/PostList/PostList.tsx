@@ -12,7 +12,7 @@ export const PostList: React.FC = () => {
   const { loading, postListAll } = useAppSelector((state) => state.posts);
   const dispatch = useAppDispatch();
 
-  const [sort, setSort] = useState<string>('date');
+  const [sort, setSort] = useState<'date' | 'score'>('date');
   const [postType, setPostType] = useState<string>('newstories');
 
   const sortPostList = [{ value: 'date' }, { value: 'score' }];
@@ -28,10 +28,6 @@ export const PostList: React.FC = () => {
       case 'score':
         return [...postListAll].sort((a, b) => b.score - a.score);
 
-      default:
-        return [...postListAll].sort(
-          (a, b) => new Date(b?.time).getTime() - new Date(a?.time).getTime()
-        );
     }
   }, [sort, postListAll]);
 
@@ -67,7 +63,7 @@ export const PostList: React.FC = () => {
         />
         <MemoCustomSelect
           options={sortPostList}
-          onChange={(sort) => setSort(sort)}
+          onChange={(sort) => setSort(sort as 'date' | 'score')}
           value={sort}
         />
       </div>
