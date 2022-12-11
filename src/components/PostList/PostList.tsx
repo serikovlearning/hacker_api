@@ -13,8 +13,10 @@ export const PostList: React.FC = () => {
   const dispatch = useAppDispatch();
 
   const [sort, setSort] = useState<string>('date');
+  const [postType, setPostType] = useState<string>('newstories');
 
-  const sortArray = [{ value: 'date' }, { value: 'score' }];
+  const sortPostList = [{ value: 'date' }, { value: 'score' }];
+  const sortPostType = [{ value: 'newstories' }, { value: 'topstories' }, {value: 'beststories'}];
 
   const sortedPosts: Array<IPost> = useMemo(() => {
     switch (sort) {
@@ -28,37 +30,49 @@ export const PostList: React.FC = () => {
 
       default:
         return [...postListAll].sort(
-          (a, b) => new Date(b.time).getTime() - new Date(a.time).getTime()
+          (a, b) => new Date(b?.time).getTime() - new Date(a?.time).getTime()
         );
     }
   }, [sort, postListAll]);
 
+  const updatePostType = (postType: string): void => {
+    setPostType(postType)
+    dispatch(fetchPost(postType))
+  }
+
   useEffect(() => {
     let timer = setTimeout(function tick() {
-      dispatch(fetchPost());
+      dispatch(fetchPost(postType));
       timer = setTimeout(tick, 60000);
     }, 60000);
 
     return () => {
       clearTimeout(timer);
     };
-  }, []);
+  }, [postType]);
+
 
   if (loading) {
     return <div></div>;
   }
+
   return (
     <div className={clasess.posts_wrapper}>
       <div className={clasess.posts__config}>
-        <button onClick={() => dispatch(fetchPost())}>Update post list</button>
+        <button onClick={() => dispatch(fetchPost(postType))}>Update post list</button>
         <MemoCustomSelect
-          options={sortArray}
+          options={sortPostType}
+          onChange={updatePostType}
+          value={postType}
+        />
+        <MemoCustomSelect
+          options={sortPostList}
           onChange={(sort) => setSort(sort)}
           value={sort}
         />
       </div>
       {sortedPosts.map((post) => (
-        <PostItem postType={'other'} postData={post}></PostItem>
+        <PostItem key={post.id} postType={'other'} postData={post}></PostItem>
       ))}
     </div>
   );

@@ -9,7 +9,7 @@ const PostsPage: React.FC = () => {
 
   useEffect(() => {
     if (postListAll.length === 0)
-    dispatch(fetchPost());
+    dispatch(fetchPost('newstories'));
   }, []);
 
   return (

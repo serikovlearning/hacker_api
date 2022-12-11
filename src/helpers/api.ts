@@ -12,9 +12,9 @@ export const getPostById = async (id: number): Promise<IPost> => {
   return response;
 };
 
-export async function getPostsId(): Promise<Array<number>> {
+export async function getPostsId(postType: string): Promise<Array<number>> {
   const response = await axios
-    .get('https://hacker-news.firebaseio.com/v0/newstories.json')
+    .get(`${BASE_URL}/${postType}.json`)
     .then(({ data }) => data)
     .catch((err) => console.log(err));
 

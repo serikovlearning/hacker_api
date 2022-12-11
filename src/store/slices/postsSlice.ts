@@ -13,11 +13,11 @@ const initialState: IPostState = {
 
 export const fetchPost = createAsyncThunk<
   Array<IPost>,
-  undefined,
+  string,
   { rejectValue: string }
->('posts/fetchPost', async function (_: undefined, { rejectWithValue }) {
+>('posts/fetchPost', async function (postType: string, { rejectWithValue }) {
   try {
-    const postsId = await getPostsId().then((res: Array<number>) => res.slice(0, 100));
+    const postsId = await getPostsId(postType).then((res: Array<number>) => res.slice(0, 100));
     const posts = await Promise.all(
       postsId.map(async (id: number) => {
         const response = await getPostById(id);
