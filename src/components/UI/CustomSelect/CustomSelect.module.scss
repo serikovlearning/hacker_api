@@ -1,6 +1,11 @@
 .select {
   transition: 0.1s ease-in-out;
   outline: none;
+
+  @media (max-width: 769px) {
+    width: 100%; 
+    text-align: center;
+  }
 }
 
 .select:active {

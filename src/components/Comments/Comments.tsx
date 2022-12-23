@@ -17,7 +17,7 @@ const Comments: React.FC<CommentsProps> = ({ getComments, comments, post }) => {
 
   return post.descendants !== 0 ? (
     <div className={classes.section_wrapper}>
-      <button onClick={getComments}>Get comments</button>
+      <button className={classes.fetch_comments} onClick={getComments}>Get comments</button>
       <h2 className={classes.title}>{post.descendants} comments</h2>
       {commentsLoading ? (
         <div className={classes.wrapper}>
