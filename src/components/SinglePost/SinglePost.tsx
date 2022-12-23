@@ -6,7 +6,7 @@ import { fetchPostById } from '../../store/slices/postsSlice';
 import Comments from '../Comments/Comments';
 import Loader from '../UI/Loader/Loader';
 import { PostItem } from '../PostItem/PostItem';
-import classes from './SinglePost.module.css'
+import classes from './SinglePost.module.scss'
 
 const SinglePost: React.FC = () => {
   const { id } = useParams<{ id: string }>();

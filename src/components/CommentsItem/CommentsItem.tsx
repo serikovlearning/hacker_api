@@ -1,7 +1,7 @@
 import React, { useState, memo } from 'react';
 import { getPostById } from '../../helpers/api';
 import { IPost } from '../../interfaces/IPost';
-import classes from './CommentsItem.module.css';
+import classes from './CommentsItem.module.scss';
 import { ReactComponent as Cross } from '../../img/cross.svg';
 import { ReactComponent as Author } from '../../img/author.svg';
 import { useAppSelector } from '../../store/hooks';

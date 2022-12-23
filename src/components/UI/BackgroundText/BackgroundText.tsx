@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { useAppSelector } from '../../../store/hooks';
-import classes from './BackgroundText.module.css';
+import classes from './BackgroundText.module.scss';
 
 const BackgroundText: React.FC = () => {
   const { postsId, loading, post } = useAppSelector((state) => state.posts);

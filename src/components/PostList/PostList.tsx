@@ -3,7 +3,7 @@ import { IPost } from '../../interfaces/IPost';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { fetchPost } from '../../store/slices/postsSlice';
 import { PostItem } from '../PostItem/PostItem';
-import clasess from './PostList.module.css';
+import clasess from './PostList.module.scss';
 import CustomSelect from '../UI/CustomSelect/CustomSelect';
 
 const MemoCustomSelect = memo(CustomSelect);

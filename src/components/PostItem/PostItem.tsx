@@ -1,6 +1,6 @@
 import { IPost } from '../../interfaces/IPost';
 import { Link } from 'react-router-dom';
-import classes from './PostItem.module.css';
+import classes from './PostItem.module.scss';
 import { ReactComponent as Author } from '../../img/author.svg';
 import { ReactComponent as Calendar } from '../../img/calendar.svg';
 import { ReactComponent as Star } from '../../img/star.svg';

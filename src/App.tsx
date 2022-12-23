@@ -1,7 +1,7 @@
 import React from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
-import './App.css';
+import './App.scss';
 import Layout from './layouts/Layout';
 import NewsPage from './pages/NewsPage';
 import PostsPage from './pages/PostsPage';

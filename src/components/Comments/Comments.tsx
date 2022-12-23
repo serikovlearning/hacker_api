@@ -3,7 +3,7 @@ import { IPost } from '../../interfaces/IPost';
 import { useAppSelector } from '../../store/hooks';
 import CommentsItem from '../CommentsItem/CommentsItem';
 import Loader from '../UI/Loader/Loader';
-import classes from './Comments.module.css'
+import classes from './Comments.module.scss'
 
 
 interface CommentsProps {

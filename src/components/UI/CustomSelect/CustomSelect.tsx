@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './CustomSelect.module.css';
+import classes from './CustomSelect.module.scss';
 
 interface Options {
   value: string;

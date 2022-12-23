@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './Loader.module.css';
+import classes from './Loader.module.scss';
 
 interface ILoader {
   size?: 'small' | 'normal' | 'big';
